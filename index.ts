@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import categoryController from "./controllers/categoryController"
 import productController from "./controllers/productController";
 import cartProductController from "./controllers/cartProductController";
+import userController from "./controllers/userController";
 
 import mongoose from "mongoose"
 
@@ -22,6 +23,7 @@ app.use(bodyParser.json());
 app.use('/', categoryController)
 app.use('/', productController)
 app.use('/', cartProductController)
+app.use('/', userController)
 /*app.get('/', (req:Request, res:Response) =>{
     res.send("Express + TypeScript Server");
 })*/

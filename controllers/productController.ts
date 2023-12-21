@@ -50,7 +50,7 @@ router.delete('/product/:id', async (req: Request, res: Response) => {
         const data = await Product.find()
         res.send(data)
     } catch (error) {
-
+        res.status(500).json({message: error})
     }
 })
 
