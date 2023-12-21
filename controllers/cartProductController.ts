@@ -20,7 +20,7 @@ router.post("/cartProduct", async (req: Request, res: Response) => {
         })
         const productToSave = await product.save();
         const cartProduct = new CartProduct({
-            product: productToSave,
+            product: productToSave._id,
             quantity: req.body.quantity
         })
         const cartProductToSave = await cartProduct.save();
@@ -29,5 +29,6 @@ router.post("/cartProduct", async (req: Request, res: Response) => {
         res.status(400).json({message: error})
     }
 })
+
 
 export default router;
