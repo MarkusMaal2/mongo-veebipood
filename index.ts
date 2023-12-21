@@ -2,6 +2,7 @@ import express, { Express, Request, Response } from "express";
 import bodyParser from "body-parser";
 import categoryController from "./controllers/categoryController"
 import productController from "./controllers/productController";
+import cartProductController from "./controllers/cartProductController";
 
 import mongoose from "mongoose"
 
@@ -20,6 +21,7 @@ const app: Express = express();
 app.use(bodyParser.json());
 app.use('/', categoryController)
 app.use('/', productController)
+app.use('/', cartProductController)
 /*app.get('/', (req:Request, res:Response) =>{
     res.send("Express + TypeScript Server");
 })*/

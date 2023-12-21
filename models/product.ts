@@ -23,7 +23,7 @@ const product = new mongoose.Schema({
     },
     created: {
         required: true,
-        type: Date
+        type: Date,
     },
     category: {
         required: true,
