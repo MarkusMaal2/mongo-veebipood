@@ -30,5 +30,45 @@ router.post("/cartProduct", async (req: Request, res: Response) => {
     }
 })
 
+router.get("/cartProduct", async (req: Request, res: Response) => {
+    try {
+        const data = await CartProduct.find().populate("product")
+        res.status(200).send(data)
+    } catch (error) {
+        res.status(500).json({message: error})
+    }
+})
+
+router.get("/cartProduct/:id", async (req: Request, res: Response) => {
+    try {
+        const data = await CartProduct.findById(req.params.id).populate("product")
+        res.status(200).send(data)
+    } catch (error) {
+        res.status(500).json({message: error})
+    }
+})
+
+router.delete("/cartProduct/:id", async(req: Request, res: Response) => {
+    try {
+        await CartProduct.findByIdAndDelete(req.params.id);
+        const data = await CartProduct.find().populate("product");
+        res.status(200).send(data)
+    } catch (error) {
+        res.status(500).json({message: error})
+    }
+})
+
+router.put("/cartProduct/:id", async(req: Request, res: Response) => {
+    try {
+        const id = req.params.id;
+        const updatedData = req.body;
+        const options = { new: true };
+        const result = await CartProduct.findByIdAndUpdate(id, updatedData, options).populate("product")
+        res.status(200).send(result)
+    } catch (error) {
+        res.status(500).json({message: error})
+    }
+})
+
 
 export default router;
